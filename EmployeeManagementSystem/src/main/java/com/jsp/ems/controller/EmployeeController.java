@@ -18,14 +18,14 @@ public class EmployeeController {
 	EmployeeService employeeService;
 
 	@RequestMapping("save")
-	public ModelAndView saveEmployee(ModelAndView mav, Emp employee) {
+	public ModelAndView saveEmployee(ModelAndView mav,  Emp employee) {
 		mav.addObject("employee", employee);
 		mav.setViewName("createemployee.jsp");
 		return mav;
 	}
 
 	@RequestMapping(value = "saveemployee", method = RequestMethod.POST)
-	public ModelAndView saveemployeetoDB(@ModelAttribute Emp employee, ModelAndView mav) {
+	public ModelAndView saveemployeetoDB (@ModelAttribute Emp employee, ModelAndView mav) {
 		Emp saved = employeeService.saveEmployee(employee);
 		if (saved != null) {
 			mav.addObject("msg", "employee Inserted...!");
